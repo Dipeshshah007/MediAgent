@@ -1,0 +1,27 @@
+# ---- Core orchestration ----
+langgraph>=0.2.0
+langchain-core>=0.3.0
+
+# ---- LLM providers (free tiers) ----
+langchain-groq>=0.2.0
+langchain-google-genai>=2.0.0
+langchain-ollama>=0.2.0
+
+# ---- RAG (local, free) ----
+langchain-chroma>=0.1.4
+langchain-huggingface>=0.1.0
+sentence-transformers>=3.0.0
+chromadb>=0.5.0
+
+# ---- App layer ----
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+streamlit>=1.36.0
+
+# ---- Config & tooling ----
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+python-dotenv>=1.0.0
+
+# ---- Tests ----
+pytest>=8.0.0
