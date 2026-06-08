@@ -9,14 +9,6 @@ Built with **LangGraph**, runs entirely on **free** model providers
 (Groq / Google Gemini / local Ollama), and ships with a Streamlit UI, a
 FastAPI service, and a CLI.
 
-> ## ⚠️ Important disclaimer
-> **MediAgent is an EDUCATIONAL software-engineering demonstration. It is NOT a
-> medical device, NOT a diagnostic tool, and NOT medical advice.** Its output
-> is illustrative and may be wrong. Never use it to diagnose, treat, or make
-> decisions about any real person. Always consult a qualified healthcare
-> professional. This project exists to demonstrate multi-agent orchestration,
-> RAG, and responsible-AI patterns — nothing more.
-
 ---
 
 ## ✨ Highlights
@@ -30,20 +22,9 @@ FastAPI service, and a CLI.
 
 ---
 
-## 🏗️ Architecture
-
-See [`docs/architecture.md`](docs/architecture.md) for full diagrams. In short:
-
-```
-triage ──(emergency)────────────────────────────► emergency report
-   │
-   └─(continue)─► symptoms ─► knowledge(RAG) ─► drug ─► differential ─► report
-```
-
-Each agent reads from and writes to a shared typed `ClinicalState`, so adding a
-new capability is: add a field, add a node, wire one edge.
-
----
+## 🧰 Tech stack
+LangGraph · LangChain · Groq / Gemini / Ollama · Chroma · sentence-transformers ·
+FastAPI · Streamlit · Pydantic · pytest · Docker
 
 ## 🚀 Quickstart
 
@@ -111,75 +92,3 @@ pytest
 (Tests for safety, JSON parsing, and graph structure need no API key.)
 
 ---
-
-## 📁 Project structure
-```
-mediagent/
-├── mediagent/              # core package
-│   ├── config.py           # env-driven settings
-│   ├── llm.py              # Groq/Gemini/Ollama abstraction
-│   ├── state.py            # shared ClinicalState schema
-│   ├── safety.py           # disclaimers + red-flag guardrails
-│   ├── utils.py            # LLM call helper + robust JSON parsing
-│   ├── graph.py            # LangGraph orchestration
-│   ├── agents/             # the six agents
-│   └── rag/                # ingestion + retrieval
-├── app/streamlit_app.py    # UI
-├── api/main.py             # FastAPI service
-├── scripts/                # ingest + CLI entrypoints
-├── tests/                  # pytest suite
-├── data/medical_knowledge/ # sample corpus (replace for real use)
-└── docs/architecture.md    # diagrams
-```
-
----
-
-## 📌 Project rationale
-
-### 1. What real-world problem does it address?
-Clinicians and triage staff face information overload: scattered guidelines,
-long medication lists, and time pressure. Early-stage information *triage and
-organisation* — not decision-making — is a genuine pain point. MediAgent
-demonstrates how a multi-agent system could *organise and summarise* case
-information to support (never replace) a professional. As a portfolio piece it
-shows you can model a messy, high-stakes workflow as a clean, safe pipeline.
-
-### 2. What is the solution?
-A coordinated team of narrow agents, each doing one job well, orchestrated by a
-LangGraph state machine. Reasoning is grounded in a retrieved knowledge corpus
-(RAG) rather than raw model memory, and a deterministic safety layer routes
-apparent emergencies straight to a "seek immediate care" response. The output
-is an organised summary with explicit confidence levels and caveats.
-
-### 3. Who are the end users?
-In this **educational framing**, the audience is *developers and recruiters*
-evaluating multi-agent / RAG / responsible-AI skills. The *simulated* domain
-users it models are healthcare staff who might use decision-*support* tooling —
-but the project is explicitly not built or validated for real clinical users.
-
-### 4. How scalable is it?
-- **Stateless core** — each request is independent, so the FastAPI service
-  scales horizontally behind a load balancer.
-- **Pluggable models** — swap to higher-throughput hosted models without code
-  changes via the provider abstraction.
-- **Vector store** — Chroma for the demo; the retriever interface can be
-  repointed at a managed vector DB (pgvector, Pinecone, etc.) for scale.
-- **Agents are independent nodes** — parallelisable and individually replaceable.
-
-### 5. Is it cost-effective, and what's the future scope?
-**Cost:** runs at **$0** on free tiers — Groq/Gemini free APIs plus local
-embeddings, so retrieval and the UI cost nothing. Ollama makes it fully
-offline.
-**Future scope:** real curated guideline corpus, a proper drug-interaction
-database, citation/traceability for every claim, evaluation harness with
-clinical QA, structured FHIR input, human-in-the-loop review, and
-observability (LangSmith/tracing). Each is a natural next commit you can show.
-
----
-
-## 🧰 Tech stack
-LangGraph · LangChain · Groq / Gemini / Ollama · Chroma · sentence-transformers ·
-FastAPI · Streamlit · Pydantic · pytest · Docker
-
-## 📜 License
-MIT (see [`LICENSE`](LICENSE)). Educational demo only — not a medical device.
