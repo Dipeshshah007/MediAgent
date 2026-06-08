@@ -30,8 +30,9 @@ FastAPI · Streamlit · Pydantic · pytest · Docker
 
 ### 1. Clone & create a virtual environment
 ```bash
-git clone <your-repo-url> mediagent
+git clone https://github.com/YOUR_USERNAME/mediagent.git
 cd mediagent
+code .
 python -m venv .venv
 # Windows:
 .venv\Scripts\activate
