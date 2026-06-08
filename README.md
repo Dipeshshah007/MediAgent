@@ -46,12 +46,9 @@ pip install -r requirements.txt
 
 ### 3. Configure a free provider
 ```bash
-cp .env.example .env     # Windows: copy .env.example .env
-```
-Then edit `.env`. **Easiest path — Groq (free & fast):**
 1. Sign up at https://console.groq.com and create an API key.
 2. Set `LLM_PROVIDER=groq` and paste the key into `GROQ_API_KEY`.
-
+```
 (Alternatives: `LLM_PROVIDER=gemini` with a free key from
 https://aistudio.google.com, or `LLM_PROVIDER=ollama` for fully-local —
 install Ollama, then `ollama pull llama3.1`.)
@@ -65,11 +62,7 @@ Chroma store. The first run downloads the embedding model (~90 MB) once.
 
 ### 5. Run it — pick any interface
 
-**Streamlit UI (recommended for demos):**
+**Streamlit UI:**
 ```bash
 streamlit run app/streamlit_app.py
 ```
-```
-(Tests for safety, JSON parsing, and graph structure need no API key.)
-
----
