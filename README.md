@@ -26,11 +26,7 @@ FastAPI service, and a CLI.
 LangGraph · LangChain · Groq / Gemini / Ollama · Chroma · sentence-transformers ·
 FastAPI · Streamlit · Pydantic · pytest · Docker
 
-## 🚀 Quickstart
-
-### 0. Prerequisites
-- Python 3.10+ and VS Code (the project is plain Python — works anywhere).
-- A free API key from **one** provider (or Ollama for fully-offline use).
+## 🚀 Setup & Run the Project: 
 
 ### 1. Clone & create a virtual environment
 ```bash
@@ -73,21 +69,6 @@ Chroma store. The first run downloads the embedding model (~90 MB) once.
 ```bash
 streamlit run app/streamlit_app.py
 ```
-
-**REST API + Swagger docs:**
-```bash
-uvicorn api.main:app --reload
-# open http://localhost:8000/docs
-```
-
-**Command line:**
-```bash
-python -m scripts.run_cli "34-year-old with sore throat and mild fever for 3 days"
-```
-
-### 6. Run the tests
-```bash
-pytest
 ```
 (Tests for safety, JSON parsing, and graph structure need no API key.)
 
