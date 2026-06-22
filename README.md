@@ -2,12 +2,8 @@
 
 A multi-agent LLM system that takes a free-text case description and walks it
 through a pipeline of specialised agents — triage, symptom structuring,
-knowledge retrieval (RAG), medication review, and differential reasoning —
+knowledge retrieval (RAG), medication review, and differential reasoning 
 to produce a structured, source-grounded summary.
-
-Built with **LangGraph**, runs entirely on **free** model providers
-(Groq / Google Gemini / local Ollama), and ships with a Streamlit UI, a
-FastAPI service, and a CLI.
 
 ---
 
@@ -50,9 +46,6 @@ pip install -r requirements.txt
 1. Sign up at https://console.groq.com and create an API key.
 2. Set `LLM_PROVIDER=groq` and paste the key into `GROQ_API_KEY`.
 ```
-(Alternatives: `LLM_PROVIDER=gemini` with a free key from
-https://aistudio.google.com, or `LLM_PROVIDER=ollama` for fully-local —
-install Ollama, then `ollama pull llama3.1`.)
 
 ### 4. Build the knowledge index (RAG)
 ```bash
